@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suits of Kindness 2026-27 Order Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .deployment-notice {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #856404;
+            font-size: 0.95em;
+        }
+
+        .deployment-notice strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 0.95em;
+            color: #1565c0;
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .swatches-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .swatch-item {
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            padding: 10px;
+            transition: all 0.3s;
+        }
+
+        .swatch-item:hover {
+            border-color: #667eea;
+            background: #f5f5f5;
+        }
+
+        .swatch-item img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 3px;
+            margin-bottom: 8px;
+        }
+
+        .swatch-name {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .suit-order {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .suit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .suit-number {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .remove-suit {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .remove-suit:hover {
+            background: #ee5a52;
+        }
+
+        .add-suit-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+
+        .add-suit-btn:hover {
+            background: #764ba2;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .radio-option:hover {
+            border-color: #667eea;
+            background: #f9f9f9;
+        }
+
+        .radio-option input[type="radio"] {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .summary-box {
+            background: #f0f4ff;
+            border: 2px solid #667eea;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 30px 0;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .summary-total {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+            border-top: 2px solid #667eea;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .receipt-section {
+            background: #fff9e6;
+            border: 2px dashed #ffc107;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 30px 0;
+            display: none;
+        }
+
+        .receipt-section.show {
+            display: block;
+        }
+
+        .receipt-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .receipt-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .receipt-item:last-child {
+            border-bottom: none;
+        }
+
+        .receipt-detail {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .submit-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #218838;
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Image Zoom Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%;
+            max-height: 90vh;
+            overflow: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .modal-close:hover {
+            color: #000;
+        }
+
+        .swatch-item {
+            cursor: pointer;
+        }
+
+        .swatch-item img {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .swatch-item:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Image Zoom Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeImageModal()">&times;</button>
+            <img id="modalImage" class="modal-image" src="" alt="">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Suits of Kindness</h1>
+            <p>Pesach 2027 Order Form</p>
+        </div>
+
+        <div class="content">
+            <div class="success-message" id="successMessage">
+                Thank you! Your order has been submitted successfully. A confirmation email will be sent to you shortly.
+            </div>
+
+            <form id="orderForm">
+                <!-- Contact Information Section -->
+                <div class="form-section">
+                    <div class="section-title">Your Information</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                            <div class="error-message" id="firstNameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                            <div class="error-message" id="lastNameError"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                            <div class="error-message" id="phoneError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Color Swatches Section -->
+                <div class="form-section">
+                    <div class="section-title">Available Colors</div>
+                    <div class="swatches-gallery" id="swatchesGallery">
+                        <!-- Swatches will be inserted here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Suit Orders Section -->
+                <div class="form-section">
+                    <div class="section-title">Your Order</div>
+                    <div id="suitsContainer">
+                        <!-- Suit order forms will be inserted here -->
+                    </div>
+                    <button type="button" class="add-suit-btn" onclick="addSuit()">+ Add Another Suit</button>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="summary-box">
+                    <div class="summary-row">
+                        <span>Total Suits Ordered:</span>
+                        <span id="totalSuits" style="font-weight: bold;">0</span>
+                    </div>
+                    <div class="summary-total">
+                        <div class="summary-row">
+                            <span>Total Price:</span>
+                            <span id="totalPrice">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Receipt -->
+                <div class="receipt-section" id="receiptSection">
+                    <div class="receipt-header">📋 Order Receipt</div>
+                    <div id="receiptContent"></div>
+                    <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #ffc107;">
+                        <div class="summary-row" style="font-weight: bold;">
+                            <span>TOTAL ITEMS:</span>
+                            <span id="receiptTotalSuits">0</span>
+                        </div>
+                        <div class="summary-row" style="font-weight: bold; color: #ff9800;">
+                            <span>TOTAL PRICE:</span>
+                            <span id="receiptTotalPrice">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method Section -->
+                <div class="form-section">
+                    <div class="section-title">Payment Method *</div>
+                    <div class="payment-options">
+                        <label class="radio-option">
+                            <input type="radio" name="payment" value="Zelle to mbmiamibeachfund@gmail.com" required>
+                            <span><strong>Zelle</strong> to mbmiamibeachfund@gmail.com</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="payment" value="Cash" required>
+                            <span><strong>Cash</strong> Payment</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="payment" value="Check" required>
+                            <span><strong>Check</strong> Payment</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="payment" value="I can't pay at this time" required>
+                            <span><strong>I can't pay at this time</strong></span>
+                        </label>
+                    </div>
+                    <div class="error-message" id="paymentError"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Order</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ===== IMPORTANT: Replace this with your Apps Script deployment URL =====
+        // Instructions: See SETUP_INSTRUCTIONS.md
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxCaVIAPjsBeH5CUqtteFyrKwWgiIeYGihNSVUfN4IfC5m4e8lEd26SK3srWwN0taSXmQ/exec";
+        // ========================================================================
+
+        // Swatch data with embedded images
+        const swatches = [
+            { id: '061', name: 'Solid Black', img: 'https://lh3.googleusercontent.com/d/1yFty-Caan8cibb4Dtt-g9gE0ajHoko9p=w400' },
+            { id: '062', name: 'Tropical Black - NEW', img: 'https://lh3.googleusercontent.com/d/1qvcmELZcsQG-qdQ3pVku3o8qAnHx9nAN=w400' },
+            { id: '063', name: 'Black on Black texture - NEW', img: 'https://lh3.googleusercontent.com/d/1qURcEXKtx-Pb9aaqLxRSGy0yIo-dZ4NB=w400' },
+            { id: '064', name: 'Black on Black micro stripe', img: 'https://lh3.googleusercontent.com/d/1-cyUb_ewkHYece64OWzs3S3OVOQIpii8=w400' },
+            { id: '065', name: 'Solid Navy', img: 'https://lh3.googleusercontent.com/d/1ZMFxSZiFayDPX6vWbNiefky3Zzx2eNbc=w400' },
+            { id: '066', name: 'Navy on Navy', img: 'https://lh3.googleusercontent.com/d/1tsRQnjZVKK48v71RU2SofYMyfKBb2HzX=w400' },
+            { id: '067', name: 'Blue micro design', img: 'https://lh3.googleusercontent.com/d/1lPctmoPrijN44r_c0fpAj691wESE8Iod=w400' },
+            { id: '068', name: 'Solid Grey', img: 'https://lh3.googleusercontent.com/d/1627v8H9RPpZxyk_IxeJR5KhuCwmDjN48=w400' },
+            { id: '069', name: 'Navy Plaid - NEW', img: 'https://lh3.googleusercontent.com/d/1xWNBgRWjqNDvhLZz9jGd5Kba9E4rMp6y=w400' }
+        ];
+
+        const fitTypes = {
+            'Regular Fit MC': [
+                '34R 30L', '36R 32', '38R 32L', '40R 34L', '42R 36L', '44R 38L', '46R 40L', '48R 42L', '50R 44L', '52R 46L', '54R 48L', '56R 50L',
+                '34 Short 30L', '36Short 32', '38Short 32L', '40Short 34L', '42Short 36L', '44Short 38L', '46Short 40L', '48Short 42L', '50Short 44L', '52Short 46L', '54Short 48L',
+                '34 Long 30L', '36Long 32', '38Long 32L', '40Long 34L', '42Long 36L', '44Long 38L', '46Long 40L', '48Long 42L', '50Long 44L', '52Long 46L', '54Long 48L'
+            ],
+            'Medium Fit HH': [
+                '34R 30L', '36R 32', '38R 32L', '40R 34L', '42R 36L', '44R 38L', '46R 40L', '48R 42L', '50R 44L', '52R 46L', '54R 48L', '56R 50L',
+                '34 Short 30L', '36Short 32', '38Short 32L', '40Short 34L', '42Short 36L', '44Short 38L', '46Short 40L', '48Short 42L', '50Short 44L', '52Short 46L', '54Short 48L',
+                '34 Long 30L', '36Long 32', '38Long 32L', '40Long 34L', '42Long 36L', '44Long 38L', '46Long 40L', '48Long 42L', '50Long 44L', '52Long 46L', '54Long 48L'
+            ],
+            'Slim Fit YD': [
+                '34R 30L', '36R 32', '38R 32L', '40R 34L', '42R 36L', '44R 38L', '46R 40L', '48R 42L', '50R 44L', '52R 46L', '54R 48L', '56R 50L',
+                '34 Short 30L', '36Short 32', '38Short 32L', '40Short 34L', '42Short 36L', '44Short 38L', '46Short 40L', '48Short 42L', '50Short 44L', '52Short 46L', '54Short 48L',
+                '34 Long 30L', '36Long 32', '38Long 32L', '40Long 34L', '42Long 36L', '44Long 38L', '46Long 40L', '48Long 42L', '50Long 44L', '52Long 46L', '54Long 48L'
+            ]
+        };
+
+        const PRICE_PER_SUIT = 110;
+        let suitCount = 0;
+
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSwatches();
+            addSuit();
+            setupFormListeners();
+        });
+
+        function initializeSwatches() {
+            const gallery = document.getElementById('swatchesGallery');
+            gallery.innerHTML = '';
+            swatches.forEach(swatch => {
+                const div = document.createElement('div');
+                div.className = 'swatch-item';
+                div.innerHTML = `
+                    <img src="${swatch.img}" alt="${swatch.name}" onclick="openImageModal('${swatch.img}', '${swatch.name}')" onerror="this.style.backgroundColor='#e0e0e0'">
+                    <div class="swatch-name">${swatch.id}<br>${swatch.name}</div>
+                `;
+                gallery.appendChild(div);
+            });
+        }
+
+        function openImageModal(imgSrc, imgAlt) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = imgSrc;
+            modalImg.alt = imgAlt;
+            modal.classList.add('show');
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+        }
+
+        // Close modal when clicking outside the image
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeImageModal();
+            }
+        });
+
+        function addSuit() {
+            suitCount++;
+            const container = document.getElementById('suitsContainer');
+            const suitDiv = document.createElement('div');
+            suitDiv.className = 'suit-order';
+            suitDiv.id = `suit-${suitCount}`;
+            suitDiv.innerHTML = `
+                <div class="suit-header">
+                    <span class="suit-number">Suit #${suitCount}</span>
+                    ${suitCount > 1 ? `<button type="button" class="remove-suit" onclick="removeSuit(${suitCount})">Remove</button>` : ''}
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fit-${suitCount}">Fit Type *</label>
+                        <select id="fit-${suitCount}" name="fit-${suitCount}" onchange="updateSizeOptions(${suitCount})" required>
+                            <option value="">-- Select Fit Type --</option>
+                            <option value="Regular Fit MC">Regular Fit MC</option>
+                            <option value="Medium Fit HH">Medium Fit HH</option>
+                            <option value="Slim Fit YD">Slim Fit YD</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="color-${suitCount}">Color (Swatch #) *</label>
+                        <select id="color-${suitCount}" name="color-${suitCount}" required>
+                            <option value="">-- Select Color --</option>
+                            ${swatches.map(s => `<option value="${s.id}">${s.id} - ${s.name}</option>`).join('')}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="size-${suitCount}">Size *</label>
+                        <select id="size-${suitCount}" name="size-${suitCount}" required>
+                            <option value="">-- First select a fit type --</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity-${suitCount}">Quantity *</label>
+                        <select id="quantity-${suitCount}" name="quantity-${suitCount}" onchange="updateTotals()" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+            `;
+            container.appendChild(suitDiv);
+        }
+
+        function removeSuit(index) {
+            const suitDiv = document.getElementById(`suit-${index}`);
+            if (suitDiv) {
+                suitDiv.remove();
+                updateTotals();
+            }
+        }
+
+        function updateSizeOptions(index) {
+            const fitSelect = document.getElementById(`fit-${index}`);
+            const sizeSelect = document.getElementById(`size-${index}`);
+            const selectedFit = fitSelect.value;
+
+            sizeSelect.innerHTML = '';
+            if (selectedFit) {
+                const sizes = fitTypes[selectedFit];
+                sizes.forEach(size => {
+                    const option = document.createElement('option');
+                    option.value = size;
+                    option.textContent = size;
+                    sizeSelect.appendChild(option);
+                });
+                sizeSelect.required = true;
+            } else {
+                const option = document.createElement('option');
+                option.value = '';
+                option.textContent = '-- First select a fit type --';
+                sizeSelect.appendChild(option);
+            }
+            updateTotals();
+        }
+
+        function updateTotals() {
+            let totalSuits = 0;
+            const suits = document.querySelectorAll('.suit-order');
+
+            suits.forEach(suit => {
+                const quantityInput = suit.querySelector('select[name^="quantity-"]');
+                if (quantityInput) {
+                    totalSuits += parseInt(quantityInput.value) || 0;
+                }
+            });
+
+            const totalPrice = totalSuits * PRICE_PER_SUIT;
+
+            document.getElementById('totalSuits').textContent = totalSuits;
+            document.getElementById('totalPrice').textContent = `$${totalPrice.toFixed(2)}`;
+
+            updateReceipt();
+        }
+
+        function updateReceipt() {
+            const receiptContent = document.getElementById('receiptContent');
+            const suits = document.querySelectorAll('.suit-order');
+            let receiptHTML = '';
+            let totalSuits = 0;
+
+            suits.forEach((suit, index) => {
+                const fitSelect = suit.querySelector('select[name^="fit-"]');
+                const colorSelect = suit.querySelector('select[name^="color-"]');
+                const sizeSelect = suit.querySelector('select[name^="size-"]');
+                const quantitySelect = suit.querySelector('select[name^="quantity-"]');
+
+                const fit = fitSelect.value;
+                const color = colorSelect.value;
+                const size = sizeSelect.value;
+                const quantity = parseInt(quantitySelect.value) || 0;
+
+                if (fit && color && size && quantity) {
+                    const colorName = swatches.find(s => s.id === color)?.name || color;
+                    receiptHTML += `
+                        <div class="receipt-item">
+                            <div class="receipt-detail">
+                                <span><strong>Suit ${index + 1}:</strong></span>
+                                <span></span>
+                            </div>
+                            <div class="receipt-detail">
+                                <span>&nbsp;&nbsp;Fit: ${fit}</span>
+                                <span></span>
+                            </div>
+                            <div class="receipt-detail">
+                                <span>&nbsp;&nbsp;Color: ${color} - ${colorName}</span>
+                                <span></span>
+                            </div>
+                            <div class="receipt-detail">
+                                <span>&nbsp;&nbsp;Size: ${size}</span>
+                                <span></span>
+                            </div>
+                            <div class="receipt-detail">
+                                <span>&nbsp;&nbsp;Quantity: ${quantity}</span>
+                                <span>$${(quantity * PRICE_PER_SUIT).toFixed(2)}</span>
+                            </div>
+                        </div>
+                    `;
+                    totalSuits += quantity;
+                }
+            });
+
+            if (receiptHTML) {
+                receiptContent.innerHTML = receiptHTML;
+                document.getElementById('receiptTotalSuits').textContent = totalSuits;
+                document.getElementById('receiptTotalPrice').textContent = `$${(totalSuits * PRICE_PER_SUIT).toFixed(2)}`;
+                document.getElementById('receiptSection').classList.add('show');
+            } else {
+                document.getElementById('receiptSection').classList.remove('show');
+            }
+        }
+
+        function setupFormListeners() {
+            document.getElementById('orderForm').addEventListener('change', function() {
+                updateTotals();
+            });
+
+            // Update on input change for quantity
+            document.addEventListener('change', function(e) {
+                if (e.target.name.startsWith('quantity-')) {
+                    updateTotals();
+                }
+            });
+        }
+
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Validation
+            if (!validateForm()) {
+                return;
+            }
+
+            // Check if Apps Script URL is configured
+            if (APPS_SCRIPT_URL === "YOUR_DEPLOYMENT_URL_HERE") {
+                alert("⚠️ Error: Apps Script URL not configured.\n\nPlease follow the setup instructions to configure the form.");
+                return;
+            }
+
+            // Collect suit orders
+            const suits = [];
+            document.querySelectorAll('.suit-order').forEach((suit, index) => {
+                const fit = suit.querySelector('select[name^="fit-"]').value;
+                const color = suit.querySelector('select[name^="color-"]').value;
+                const size = suit.querySelector('select[name^="size-"]').value;
+                const quantity = suit.querySelector('select[name^="quantity-"]').value;
+
+                if (fit && color && size && quantity) {
+                    suits.push({ fit, color, size, quantity: parseInt(quantity) });
+                }
+            });
+
+            // Prepare data to send
+            const submissionData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                payment: document.querySelector('input[name="payment"]:checked').value,
+                suits: suits,
+                totalSuits: document.getElementById('totalSuits').textContent,
+                totalPrice: document.getElementById('totalPrice').textContent
+            };
+
+            const EMAIL = submissionData.email;
+            const FIRST_NAME = submissionData.firstName;
+
+            // Disable submit button during submission
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').textContent = 'Submitting...';
+
+            // Send to Google Apps Script
+            fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(submissionData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Show success message
+                    document.getElementById('successMessage').classList.add('show');
+                    document.getElementById('orderForm').style.display = 'none';
+
+                    // Reset form after 3 seconds
+                    setTimeout(() => {
+                        location.reload();
+                    }, 3000);
+                } else {
+                    throw new Error(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('❌ Error submitting form: ' + error.message + '\n\nPlease try again or contact support.');
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('submitBtn').textContent = 'Submit Order';
+            });
+        });
+
+        function validateForm() {
+            let isValid = true;
+
+            // Check required fields
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            if (!firstName) {
+                document.getElementById('firstNameError').textContent = 'First name is required';
+                isValid = false;
+            }
+            if (!lastName) {
+                document.getElementById('lastNameError').textContent = 'Last name is required';
+                isValid = false;
+            }
+            if (!phone) {
+                document.getElementById('phoneError').textContent = 'Phone number is required';
+                isValid = false;
+            }
+            if (!email || !email.includes('@')) {
+                document.getElementById('emailError').textContent = 'Valid email is required';
+                isValid = false;
+            }
+
+            // Check at least one suit is configured
+            let hasValidSuit = false;
+            document.querySelectorAll('.suit-order').forEach(suit => {
+                const fit = suit.querySelector('select[name^="fit-"]').value;
+                const color = suit.querySelector('select[name^="color-"]').value;
+                const size = suit.querySelector('select[name^="size-"]').value;
+                const quantity = suit.querySelector('select[name^="quantity-"]').value;
+
+                if (fit && color && size && quantity) {
+                    hasValidSuit = true;
+                }
+            });
+
+            if (!hasValidSuit) {
+                alert('Please complete at least one suit order (select fit type, color, size, and quantity).');
+                isValid = false;
+            }
+
+            // Check payment method
+            const paymentSelected = document.querySelector('input[name="payment"]:checked');
+            if (!paymentSelected) {
+                document.getElementById('paymentError').textContent = 'Please select a payment method';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>
